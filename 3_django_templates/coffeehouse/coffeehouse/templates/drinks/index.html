@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %} Coffeehouse Drinks page {% endblock %} 
+
+{% block breadcrumb %} 
+        <li><a href="/">Home</a> <span class="divider">/</span></li>         
+	{% if drink %}
+            <li><a href="/drinks/">Drinks</a> <span class="divider">/</span></li>         
+        {% else %} 
+            <li class="active">Drinks</li>
+	{% endif %}
+{% endblock %}
+
+{% block content %}
+
+  <ul> 
+{% for drink in drinks %}
+    <li><a href="/drinks/{{drink}}">{{drink|title}}</a></li>    
+{% endfor %}
+  </ul>
+
+{% endblock %}

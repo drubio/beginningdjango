@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %} Coffeehouse Stores page {% endblock %} 
+
+{% block breadcrumb %} 
+        <li><a href="/">Home</a> <span class="divider">/</span></li>         
+	{% if store_name %}
+            <li><a href="/stores/">Stores</a> <span class="divider">/</span></li>         
+        {% else %} 
+            <li class="active">Stores</li>
+        {% endif %} 
+{% endblock %} 
+
+{% block content %}
+
+  <ul> 
+{% for store in stores %}
+    <li><a href="/stores/{{store.id}}">{{store.name}}</a></li>    
+{% endfor %}
+  </ul>
+
+{% endblock %}
+ 

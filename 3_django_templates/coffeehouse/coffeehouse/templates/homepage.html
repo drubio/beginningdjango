@@ -1,0 +1,31 @@
+{% extends "base.html" %} 
+{% load store_format_tf %}
+{% block title %} Coffeehouse home page {% endblock %} 
+{% block content %}
+
+  <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+        <h1>Welcome to the Coffeehouse!</h1>
+        <p><a class="btn btn-primary btn-large" href="/about/">Learn more &raquo;</a></p>
+	{% with elvar="Welcome to the Coffeehouse!" %} 
+	{{elvar|undercoffee}}
+	{{elvar|boldcoffee}}
+        {% endwith%}
+      </div>
+
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="span4">
+          <h2>Stores</h2>
+          <p><a class="btn" href="/stores/">View store details &raquo;</a></p>
+        </div>
+        <div class="span4">
+          <h2>Drinks</h2>
+          <p><a class="btn" href="/drinks/">View drink details &raquo;</a></p>
+        </div>
+        <div class="span4">
+          <h2>Order online</h2>
+          <p><a class="btn" href="/online/">Order online &raquo;</a></p>
+        </div>
+      </div>
+{% endblock %}

@@ -1,0 +1,51 @@
+<h4> {{store_name}} store</h4>
+<p>{{store_address.street}}</p>
+<p>{{store_address.city}},{{store_address.state}}</p>
+<hr/>
+<p>We offer: {{store_amenities.0}} and {{store_amenities.1}}</p> 
+<p>Menu includes : {{store_menu.1.1}} and {{store_menu.2.1}}</p> 
+<hr/>  
+<p>custom context processor variable</p> 
+<ul>
+  <li><code>SALE_ITEMS</code>:{{SALE_ITEMS}}</li>
+</ul>
+<p>auth context processor variables</p>
+<ul>
+ <li><code>user</code>:{{user}}</li>
+ <li><code>perms.coffeehouse.about</code>: {{perms.coffeehouse.about}}</li>
+ <li><code>perms.sites</code>:{{perms.sites}}</li>
+</ul>
+<p>debug context processor variables</p>
+<ul>
+ <li><code>debug</code>:{{debug}}</li>
+ <li><code>sql_queries</code>:{{sql_queries}}</li>
+</ul>
+
+<p>i18n context processor variables</p>
+<ul>
+ <li><code>LANGUAGES</code>:{{LANGUAGES}}</li>
+ <li><code>LANGUAGE_CODE</code>:{{LANGUAGE_CODE}}</li>
+ <li><code>LANGUAGE_BIDI</code>:{{LANGUAGE_BIDI}}</li>
+</ul>
+
+
+<p>media context processor variable</p>
+<ul>
+<li><code>MEDIA_URL</code>:{{MEDIA_URL}}</li>
+</ul>
+
+<p>static context processor variable</p>
+<ul>
+<li><code>STATIC_URL</code>:{{STATIC_URL}}</li>
+</ul>
+
+<p>tz context processor variable</p>
+<ul>
+<li><code>TIME_ZONE</code>:{{TIME_ZONE}}</li>
+</ul>
+
+
+<p>message context processor variable</p>
+<ul>
+<li><code>messages</code>:{{messages}}</li>
+</ul>
