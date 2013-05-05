@@ -1,5 +1,6 @@
 {% extends "base.html" %} 
 {% load store_format_tf %}
+
 {% block title %} Coffeehouse home page {% endblock %} 
 {% block content %}
 
@@ -7,9 +8,8 @@
       <div class="hero-unit">
         <h1>Welcome to the Coffeehouse!</h1>
         <p><a class="btn btn-primary btn-large" href="/about/">Learn more &raquo;</a></p>
-	{% with elvar="Welcome to the Coffeehouse!" %} 
-	{{elvar|undercoffee}}
-	{{elvar|boldcoffee}}
+	{% with myvar="Open since 1965!" %} 	
+	{{myvar|customcoffee:"lead muted"}}
         {% endwith%}
       </div>
 
