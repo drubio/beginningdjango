@@ -1,5 +1,8 @@
 # Django settings for coffeehouse project.
 
+import os
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -106,7 +109,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    "/www/djangorecipes/2_move_values_in_django/coffeehouse/templates/"
+    '%s/templates/'% (PROJECT_DIR)
 )
 TEMPLATE_CONTEXT_PROCESSORS = ('coffeehouse.stores.processors.onsale',
                                'django.contrib.auth.context_processors.auth', 
