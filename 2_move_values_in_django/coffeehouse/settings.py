@@ -21,6 +21,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'coffeehouse.about',
+    'coffeehouse.stores',
     'django.contrib.admindocs',
 )
 
