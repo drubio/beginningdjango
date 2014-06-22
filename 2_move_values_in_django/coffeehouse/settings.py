@@ -6,10 +6,10 @@ PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 SECRET_KEY = '%ea)cjy@v9(#7!b#(#20gl+4-6iur28dy=tc4f$-zbm-v#=!#t'
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 

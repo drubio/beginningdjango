@@ -1,6 +1,6 @@
-<h4> {{store_name}} store</h4>
-<p>{{store_address.street}}</p>
-<p>{{store_address.city}},{{store_address.state}}</p>
+<h4> {{store.name}} store</h4>
+<p>{{store.address}}</p>
+<p>{{store.city}},{{store.state}}</p>
 <hr/>
 <p>We offer: {{store_amenities.0}} and {{store_amenities.1}}</p> 
 <p>Menu includes : {{store_menu.1.1}} and {{store_menu.2.1}}</p> 
@@ -15,6 +15,7 @@
  <li><code>perms.coffeehouse.about</code>: {{perms.coffeehouse.about}}</li>
 </ul>
 <p>debug context processor variables</p>
+<p><b>NOTE</b>: Debug context processor variables are only available when <code>DEBUG=True</code> in <code>settings.py</code> &amp; requesting IP address is in <code>INTERNAL_IPS</code> also in <code>settings.py</code>. Otherwise these variables are always empty.</p>
 <ul>
  <li><code>debug</code>:{{debug}}</li>
  <li><code>sql_queries</code>:{{sql_queries}}</li>

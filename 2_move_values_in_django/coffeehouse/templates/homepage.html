@@ -1,8 +1,15 @@
 <h4>Home page for Django</h4>
 
 <ul>
- <li> Drink link: <a href="/drinks/mocha">/drinks/mocha</a></li>
- <li> Drink link: <a href="/drinks/espresso">/drinks/espresso</a></li>
+ <li> Drink link: <a href="/drinks/mocha/">/drinks/mocha/</a></li>
+ <li> Drink link: <a href="/drinks/espresso/">/drinks/espresso/</a></li>
  <li> Store link: <a href="/stores/">/stores/</a></li>
- <li> Store link: <a href="/stores/1">/stores/1</a></li>
+ <li> Store link: <a href="/stores/1/">/stores/1/</a></li>
 </ul>
+
+<h4>Django HTTP handling</h4> 
+ <li>302 - Permanent redirect <a href="/stores/1/?latitude=90&longitude=90">/stores/1/?latitude=90&longitude=90</a> (Latitude 90 and longitude 90, redirects to maps.google.com)</li>
+ <li>400 - Bad request <a href="/stores/1/?latitude=ABC&longitude=DEF">/stores/1/?latitude=ABC&longitude=DEF</a> (Latitude and/or Longitude not numbers)</li>
+ <li>404 - Not found <a href="/stores/1/?hours=lundi">/stores/1/?hours=lundi</a> (Unknown day to get hours)</li>
+ <li>500 - Internal server error <a href="/stores/1/?latitude=92.71&longitude=-117.16">/stores/1/?latitude=92.71&longitude=-117.16</a> (Latitude out of range -90 to 90)</li>
+ <li>500 - Internal server error <a href="/stores/1/?latitude=32.71&longitude=-187.16">/stores/1/?latitude=32.71&longitude=-187.16</a> (Longitude out of range -180 to 180)</li>
