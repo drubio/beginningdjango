@@ -13,7 +13,8 @@ handler500 = 'coffeehouse.utils.views.server_error'
 
 urlpatterns = patterns('',
     url(r'^$',TemplateView.as_view(template_name='homepage.html')),
-    url(r'^about/','coffeehouse.about.views.contact'),
+    url(r'^about/contact','coffeehouse.about.views.contact'),
+    url(r'^about/','coffeehouse.about.views.index'),
     url(r'^drinks/(?P<drink_type>\D+)/',TemplateView.as_view(template_name='drinks/index.html'),{'onsale':True}),
     url(r'^stores/(?P<store_id>\d+)/','coffeehouse.stores.views.index'),
     url(r'^stores/','coffeehouse.stores.views.index',{'location':'headquarters'}),
