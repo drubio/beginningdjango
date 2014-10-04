@@ -1,9 +1,15 @@
 # Create your views here.
 from django.shortcuts import render
 from django.core.exceptions import PermissionDenied,SuspiciousOperation
-from django.http import Http404
+from django.http import Http404,HttpResponsePermanentRedirect
 
-def index(request,store_id=1,location=None):
+STORE_LIST =  [{'id':0,'name':'Corporate','address':'624 Broadway','city':'San Diego','state':'CA','email':'corporate@coffeehouse.com'},{'id':1,'name':'Downtown','address':'Horton Plaza','city':'San Diego','state':'CA','email':'downtown@coffeehouse.com'},{'id':2,'name':'Uptown','address':'1240 University Ave','city':'San Diego','state':'CA','email':'uptown@coffeehouse.com'},{'id':3,'name':'Midtown','address':'784 W Washington St','city':'San Diego','state':'CA','email':'midtown@coffeehouse.com'}]
+
+def index(request,location=None):
+    store_list = STORE_LIST[1:]
+    return render(request,'stores/index.html',  {'stores':store_list})    
+
+def detail(request,store_id=1,location=None):
     # Access store_id parameter with 'store_id' variable 
     # Access location parameter with 'location' variable
     # Extract 'hours', 'lat' or 'lon' values appended to url as
@@ -31,12 +37,19 @@ def index(request,store_id=1,location=None):
     if float(longitude) > 180 or float(longitude) < -180:
         raise Exception("Invalid longitude, min -180 and max 180")
     # If latitude==90 and longitude==90, redirect to maps.google.com
-    if float(longitude) == 90 or float(longitude) == 90:
+    if float(latitude) == 90 or float(longitude) == 90:
         return HttpResponsePermanentRedirect("http://maps.google.com/")
     # Create fixed data structures to pass to template
     # data could equally come from database queries
-    store = {'name':'Downtown','address':'Main #385','city':'San Diego','state':'CA'}
+    if store_id == "1":
+        store = STORE_LIST[1]
+    elif store_id == "2":
+        store = STORE_LIST[2]
+    elif store_id == "3":
+        store = STORE_LIST[3]
+    else:
+        raise Http404
     store_amenities = ['WiFi','A/C']
     store_menu = ((0,''),(1,'Drinks'),(2,'Food'))
     vals_for_template = {'store':store,'store_amenities':store_amenities,'store_menu':store_menu}
-    return render(request,'stores/index.html', vals_for_template)
+    return render(request,'stores/detail.html', vals_for_template)
