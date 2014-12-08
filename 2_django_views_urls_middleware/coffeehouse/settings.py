@@ -33,6 +33,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'coffeehouse.utils.middleware.CoffeehouseMiddleware',
 )
 
 ROOT_URLCONF = 'coffeehouse.urls'
