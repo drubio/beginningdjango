@@ -7,7 +7,7 @@
   <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
         <h1>Welcome to the Coffeehouse!</h1>
-        <p><a class="btn btn-primary btn-lg" href="/about/">Learn more &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg" href="{% url 'about:index'%}">Learn more &raquo;</a></p>
 	{% with myvar="Open since 1965!" %} 	
 	{{myvar|customcoffee:"lead muted"}}
         {% endwith%}
@@ -17,15 +17,15 @@
       <div class="row">
         <div class="col-md-4">
           <h2>Stores</h2>
-          <p><a class="btn btn-default" href="/stores/">View store details &raquo;</a></p>
+          <p><a class="btn btn-default" href="{% url 'stores:index' %}">View store details &raquo;</a></p>
         </div>
         <div class="col-md-4">
           <h2>Drinks</h2>
-          <p><a class="btn btn-default" href="/drinks/">View drink details &raquo;</a></p>
+          <p><a class="btn btn-default" href="{% url 'drinks:index' %}">View drink details &raquo;</a></p>
         </div>
         <div class="col-md-4">
           <h2>Order online</h2>
-          <p><a class="btn btn-default" href="/online/">Order online &raquo;</a></p>
+          <p><a class="btn btn-default" href="{% url 'online' %}">Order online &raquo;</a></p>
         </div>
       </div>
 {% endblock %}
