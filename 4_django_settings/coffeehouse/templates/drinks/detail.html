@@ -1,0 +1,14 @@
+{% extends "drinks/index.html" %}
+{% block title %} {{drink|title}} drink {% endblock %} 
+
+{% block breadcrumb %}
+     {{ block.super }}
+     <li class="active">{{drink|title}}</li>
+{% endblock %}
+
+{% block content %}
+
+<h4> {{drink|title}}</h4>
+<p>{{drink_description}}</p>
+
+{% endblock %}
