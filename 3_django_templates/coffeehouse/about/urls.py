@@ -1,8 +1,8 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, url
 
-urlpatterns = patterns('coffeehouse.about.views',
-    url(r'^$','index',name="index"),
-    url(r'^(?P<store_id>\d+)/$','index',name="index_withid"),
-    url(r'^contact/$','contact',name="contact"),
-    url(r'^contact/(?P<store_id>\d+)/$','contact',name="contact_withid"),
-)
+urlpatterns = [
+    url(r'^$','coffeehouse.about.views.index',name="index"),
+    url(r'^(?P<store_id>\d+)/$','coffeehouse.about.views.index',name="index_withid"),
+    url(r'^contact/$','coffeehouse.about.views.contact',name="contact"),
+    url(r'^contact/(?P<store_id>\d+)/$','coffeehouse.about.views.contact',name="contact_withid"),
+]

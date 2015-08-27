@@ -1,4 +1,4 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, url
 from django.views.generic import TemplateView
 
 # Uncomment the next two lines to enable the admin:
@@ -7,7 +7,7 @@ admin.autodiscover()
 
 from coffeehouse.drinks.urls import urlpatterns as drinks_url_patterns
 
-urlpatterns = patterns('',
+urlpatterns = [
     url(r'^$',TemplateView.as_view(template_name='homepage.html'),name="homepage"),
     url(r'^about/', include('coffeehouse.about.urls',namespace="about")),
     url(r'^drinks/', include(drinks_url_patterns,namespace="drinks")),
@@ -15,4 +15,4 @@ urlpatterns = patterns('',
     url(r'^online/',TemplateView.as_view(template_name='online/index.html'),name='online'),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
-)
+]

@@ -1,6 +1,6 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, url
 
-urlpatterns = patterns('coffeehouse.drinks.views',
-    url(r'^$','index',name="index"),
-    url(r'^(?P<drink_type>\D+)/$','detail',name="detail"),
-)
+urlpatterns = [
+    url(r'^$','coffeehouse.drinks.views.index',name="index"),
+    url(r'^(?P<drink_type>\D+)/$','coffeehouse.drinks.views.detail',name="detail"),
+]
