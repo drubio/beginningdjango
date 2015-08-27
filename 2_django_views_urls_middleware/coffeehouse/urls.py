@@ -1,4 +1,4 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, url
 from django.contrib import admin
 from django.views.generic import TemplateView
 
@@ -11,7 +11,7 @@ handler404 = 'coffeehouse.utils.views.page_not_found'
 # Overrides the default 500 handler django.views.defaults.server_error
 handler500 = 'coffeehouse.utils.views.server_error'
 
-urlpatterns = patterns('',
+urlpatterns = [
     url(r'^$',TemplateView.as_view(template_name='homepage.html'),name="homepage"),
     url(r'^about/',include('coffeehouse.about.urls',namespace="about")),
     url(r'^drinks/(?P<drink_type>\D+)/',TemplateView.as_view(template_name='drinks/index.html'),{'onsale':True},name="drink_type"),
@@ -21,4 +21,4 @@ urlpatterns = patterns('',
     url(r'^coffeebanners/',include('coffeehouse.banners.urls',namespace="coffee-banners",app_name="banners_adverts")),
     url(r'^teabanners/',include('coffeehouse.banners.urls',namespace="tea-banners",app_name="banners_adverts")),
     url(r'^foodbanners/',include('coffeehouse.banners.urls',namespace="food-banners",app_name="banners_adverts")),
-)
+]

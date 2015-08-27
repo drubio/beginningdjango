@@ -1,5 +1,5 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
-urlpatterns = patterns('coffeehouse.banners.views',
-    url(r'^$','index',name="index"),
-)
+urlpatterns = [
+    url(r'^$','coffeehouse.banners.views.index',name="index"),
+]
