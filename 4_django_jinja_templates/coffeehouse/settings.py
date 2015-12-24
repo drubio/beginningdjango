@@ -60,13 +60,27 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 TEMPLATES = [
+    { 
+        'BACKEND':'django.template.backends.jinja2.Jinja2',
+        'DIRS': ['%s/templates/'% (PROJECT_DIR),],
+        'APP_DIRS': True,
+        'OPTIONS': { 
+            'extensions': [
+                'jdj_tags.extensions.DjangoCompat',
+                'coffeehouse.jinja.extensions.DjangoNow'
+                ],
+            'lstrip_blocks':True,
+            'trim_blocks':True,
+            #'keep_trailing_newline':True,
+            'environment': 'coffeehouse.jinja.env.JinjaEnvironment'
+            }
+        },
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': ['%s/templates/'% (PROJECT_DIR),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                               'coffeehouse.stores.processors.onsale',
                                'django.template.context_processors.debug',
                                'django.template.context_processors.request',
                                'django.contrib.auth.context_processors.auth',
