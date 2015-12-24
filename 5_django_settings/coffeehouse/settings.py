@@ -15,10 +15,8 @@ else:
 # Define general behavior variables for live host and non live host
 if LIVEHOST:
     DEBUG = False
-    TEMPLATE_DEBUG = False
 else:
     DEBUG = True
-    TEMPLATE_DEBUG = True
 
 SECRET_KEY = '%ea)cjy@v9(#7!b#(#20gl+4-6iur28dy=tc4f$-zbm-v#=!#t'
 
