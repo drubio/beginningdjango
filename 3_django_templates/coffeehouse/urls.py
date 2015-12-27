@@ -1,9 +1,7 @@
 from django.conf.urls import include, url
 from django.views.generic import TemplateView
-
-# Uncomment the next two lines to enable the admin:
 from django.contrib import admin
-admin.autodiscover()
+
 
 from coffeehouse.drinks.urls import urlpatterns as drinks_url_patterns
 
@@ -14,5 +12,5 @@ urlpatterns = [
     url(r'^stores/',include('coffeehouse.stores.urls',namespace="stores")),
     url(r'^online/',TemplateView.as_view(template_name='online/index.html'),name='online'),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', admin.site.urls),
 ]

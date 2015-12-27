@@ -17,7 +17,7 @@ urlpatterns = [
     url(r'^drinks/(?P<drink_type>\D+)/',TemplateView.as_view(template_name='drinks/index.html'),{'onsale':True},name="drink_type"),
     url(r'^stores/',include('coffeehouse.stores.urls',namespace="stores")),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', admin.site.urls),
     url(r'^coffeebanners/',include('coffeehouse.banners.urls',namespace="coffee-banners",app_name="banners_adverts")),
     url(r'^teabanners/',include('coffeehouse.banners.urls',namespace="tea-banners",app_name="banners_adverts")),
     url(r'^foodbanners/',include('coffeehouse.banners.urls',namespace="food-banners",app_name="banners_adverts")),
