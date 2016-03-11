@@ -26,9 +26,7 @@ class Store(models.Model):
 from socketIO_client import SocketIO
 from urlparse import urlparse
 from django.conf import settings
-from django.core import serializers
-from django.forms.models import model_to_dict
-import json #json.dumps(model_to_dict(self))})
+import json
 
 
 class Special(models.Model):
@@ -49,7 +47,6 @@ class Special(models.Model):
             baseport = parsedurl.port if parsedurl.port != None else 80
             # Publish record to node.js socket
             with SocketIO(baseurl, baseport) as socketIO:
-                #socketIO.emit('admindailyspecials', {"special":serializers.serialize('json', [self,] )})
                 socketIO.emit('admindailyspecials', {"special":{'description':self.description,'start':self.start.strftime("%B %d"),'end':self.end.strftime("%B %d")}})
         super(Special, self).save(*args, **kwargs)
     
