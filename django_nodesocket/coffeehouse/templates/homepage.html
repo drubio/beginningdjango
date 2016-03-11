@@ -1,0 +1,67 @@
+{% extends "base.html" %} 
+{% block prehead %} 
+<script src="{{NODEJS_SOCKET_URL}}/socket.io/socket.io.js"></script>
+<script>
+  var socket = io.connect('{{NODEJS_SOCKET_URL}}');
+  socket.on('dailyspecials', function (data) {
+    console.log(data);
+    // Check if the data has a special attribute to see if we publish to feed
+    if (data.message.special) { 
+      console.log(data.message.special);
+    // Append to specials-list
+    $("#specials-list").prepend("<li class='list-group-item' style='background-color: #337ab7;'><b>" + data.message.special.description+ "</b><br/>Start: " + data.message.special.start +"<br/>End: " + data.message.special.end +"</li>");
+    } else { 
+    }
+   });
+</script>
+{% endblock %}
+{% block title %} Coffeehouse home page {% endblock %} 
+{% block nobreadcrumb %}{% endblock %}
+{% block content %}
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+	<div class="row">
+	  <div class="col-md-10">
+            <h1>Welcome to the Coffeehouse!</h1>
+            <p><a class="btn btn-primary btn-lg" href="{% url 'about:index'%}">Learn more &raquo;</a></p>
+	    <span class="lead muted">Open since 1965!</span>
+	  </div>
+	  <div class="col-md-2">
+	    <div class="panel panel-default">
+	      <div class="panel-heading"> <span class="glyphicon glyphicon-list-alt"></span> <b>Specials</b></div>
+	      <div class="panel-body"  style="max-height:150px;overflow-y:scroll;">
+		<div class="row">
+		    <ul class="list-group" id="specials-list">
+		      {% for special in specials %}
+		      <li class="list-group-item">
+			<b>{{special.description}}</b><br/>
+			Start: {{special.start|date:"N d"}}<br/>
+			End: {{special.end|date:"N d"}}
+		      </li>
+		      {% endfor %}
+		    </ul>
+		</div>
+	      </div>
+	      <div class="panel-footer"> </div>
+	    </div>
+	  </div>
+	</div>
+      </div>
+
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-4">
+          <h2>Stores</h2>
+          <p><a class="btn btn-default" href="{% url 'stores:index' %}">View store details &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>Items</h2>
+          <p><a class="btn btn-default" href="{% url 'items:index' %}">View item details &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>Order online</h2>
+          <p><a class="btn btn-default" href="{% url 'online' %}">Order online &raquo;</a></p>
+        </div>
+      </div>
+{% endblock %}

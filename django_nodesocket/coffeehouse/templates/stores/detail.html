@@ -1,0 +1,21 @@
+{% extends "stores/index.html" %}
+{% block title %} Coffeehouse {{store.name}} {% endblock %} 
+
+{% block breadcrumb %}
+     {{ block.super }}
+    <li class="active">{{store.name}}</li>
+{% endblock %}
+
+
+{% block content %}
+
+<h4> {{store.name}} store</h4>
+<p>{{store.address}}</p>
+<p>{{store.city}},{{store.state}}</p>
+<hr/>
+<p>We offer: 
+<ul>
+{% for amenity in store.amenities.all %}<li>{{amenity.name}}.- {{amenity.description}}</li>{% endfor %}
+</ul>
+
+{% endblock %}

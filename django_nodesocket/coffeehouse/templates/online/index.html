@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %} Coffeehouse order online {% endblock %} 
+
+{% block breadcrumb %} 
+        <li><a href="{% url 'homepage' %}">Home</a></li>         
+        <li class="active">Order online</li>
+{% endblock %} 
+
+
+{% block content %} 
+<h4> Coming soon! </h4>
+<p> Sorry for the inconvenience </p> 
+<p> Thank you for visiting today {% now "F jS o" %}</p> 
+
+{% endblock %}

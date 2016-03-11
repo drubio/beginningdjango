@@ -1,0 +1,6 @@
+Django==1.9
+argparse==1.2.1
+distribute==0.6.24
+docutils==0.12
+wsgiref==0.1.2
+socketIO-client==0.6.5
