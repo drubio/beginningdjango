@@ -1,7 +1,9 @@
 from django.conf.urls import include, url
 
+from . import views 
+
 urlpatterns = [
-    url(r'^$','coffeehouse.stores.views.index',name="index"),
-    url(r'^(?P<store_id>\d+)/$','coffeehouse.stores.views.detail',name="detail"),
+    url(r'^$',views.index,name="index"),
+    url(r'^(?P<store_id>\d+)/$',views.detail,name="detail"),
     url(r'^(?P<store_id>\d+)/about/',include('coffeehouse.about.urls',namespace="about")),
 ]
