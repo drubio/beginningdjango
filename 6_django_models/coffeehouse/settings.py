@@ -18,6 +18,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'coffeehouse.about',
     'coffeehouse.stores',
     'coffeehouse.items',
 ]
@@ -28,7 +29,6 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -46,10 +46,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.i18n', 
-                'django.template.context_processors.media', 
-                'django.template.context_processors.static', 
-                'django.template.context_processors.tz',
             ],
         },
     },
@@ -93,10 +89,3 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 INTERNAL_IPS = ('127.0.0.1')
-
-STATICFILES_DIRS = ('%s/website-static-default/'% (BASE_DIR),
-                    ('bootstrap','%s/bootstrap-3.1.1-dist/'% (BASE_DIR)),
-                    ('jquery','%s/jquery-1-11-1-dist/'% (BASE_DIR)),
-                    ('jquery-ui','%s/jquery-ui-1.10.4/'% (BASE_DIR)),)
-
-STATIC_ROOT = '%s/coffeestatic/'% (BASE_DIR)
