@@ -1,5 +1,5 @@
 {% extends "base.html" %} 
-{% load store_format_tf %}
+
 
 {% block title %} Coffeehouse home page {% endblock %} 
 {% block nobreadcrumb %}{% endblock %}
@@ -9,9 +9,7 @@
       <div class="jumbotron">
         <h1>Welcome to the Coffeehouse!</h1>
         <p><a class="btn btn-primary btn-lg" href="{% url 'about:index'%}">Learn more &raquo;</a></p>
-	{% with myvar="Open since 1965!" %} 	
-	{{myvar|customcoffee:"lead muted"}}
-        {% endwith%}
+	<span class="lead muted">Open since 1965!</span>
       </div>
 
       <!-- Example row of columns -->
