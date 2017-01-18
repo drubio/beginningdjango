@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
 class CoffeehouseMiddleware(object):
 
     def __init__(self):        
@@ -16,7 +19,7 @@ class CoffeehouseMiddleware(object):
         HttpResponse -- An HttpResponse object; If it returns an HttpResponse object, Django won't bother calling any other request, view or exception middleware, or the appropriate view; it will apply response middleware to that HttpResponse, and return the result.
         NOTE: Request-phase method applied in order, from the top to bottom. This means classes defined at the start of MIDDLEWARE_CLASSES will be run first.
         """
-	pass
+        pass
     
     
 
@@ -32,7 +35,7 @@ class CoffeehouseMiddleware(object):
         HttpResponse -- An HttpResponse object; If it returns an HttpResponse object, Django won't bother calling any other view or exception middleware, or the appropriate view; it'll apply response middleware to that HttpResponse, and return the result.
         NOTE: Request-phase method applied in order, from the top to bottom. This means classes defined at the start of MIDDLEWARE_CLASSES will be run first.
         """
-	pass
+        pass
     
     
     def process_exception(self,request, exception):
@@ -45,7 +48,7 @@ class CoffeehouseMiddleware(object):
 	HttpResponse -- An HttpResponse object; If it returns an HttpResponse object, the template response and response middleware will be applied, and the resulting response returned to the browser. If an exception middleware returns a response, the middleware classes above that middleware will not be called at all.
         NOTE: Response-phase method applied in reverse order, from the bottom up. This means classes defined at the end of MIDDLEWARE_CLASSES will be run first.
         """
-	pass
+        pass
     
     def process_template_response(self,request, response):
         """  Called just after the view has finished executing.
@@ -57,7 +60,7 @@ class CoffeehouseMiddleware(object):
         NOTE: You don't need to explicitly render responses, responses are automatically rendered once all template response middleware has been called.
         NOTE2: Response-phase method applied in reverse order, from the bottom up. This means classes defined at the end of MIDDLEWARE_CLASSES will be run first.
         """
-	return response
+        return response
     
     def process_response(self,request, response): 
         """ Called on all responses before they're returned to the browser.
@@ -68,5 +71,5 @@ class CoffeehouseMiddleware(object):
         HttpResponse or StreamingHttpResponse -- An HttpResponse or StreamingHttpResponse object; It could alter the given response, or it could create and return a brand-new HttpResponse or StreamingHttpResponse.
         NOTE: Response-phase method applied in reverse order, from the bottom up. This means classes defined at the end of MIDDLEWARE_CLASSES will be run first.
         """
-	return response
+        return response
 

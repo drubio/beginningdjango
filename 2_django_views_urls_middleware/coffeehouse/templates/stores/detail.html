@@ -1,8 +1,8 @@
 <h4> {{store.name}} store</h4>
 <p>We offer: {{store_amenities.0}} and {{store_amenities.1}}</p> 
 <p>Menu includes : {{store_menu.1.1}} and {{store_menu.2.1}}</p> 
-<p><a href="{% url 'stores:about:index' store.id %}">More about this store</a></p> 
-<p><a href="{% url 'stores:about:contact' store.id %}">Contact this store</a></p> 
+<p><a href="{% url 'stores:stores_about:index' store.id %}">More about this store</a></p> 
+<p><a href="{% url 'stores:stores_about:contact' store.id %}">Contact this store</a></p> 
 <hr/>  
 <p>custom context processor variable</p> 
 <ul>
