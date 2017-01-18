@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 
 from jinja2 import lexer, nodes
 from jinja2.ext import Extension

@@ -2,6 +2,7 @@ from django.conf.urls import include, url
 from django.views.generic import TemplateView
 from django.contrib import admin
 
+
 from coffeehouse.drinks.urls import urlpatterns as drinks_url_patterns
 
 urlpatterns = [

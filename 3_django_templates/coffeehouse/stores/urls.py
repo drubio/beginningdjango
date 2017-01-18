@@ -1,8 +1,12 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
 from django.conf.urls import include, url
-from coffeehouse.stores import views as stores_views
+
+from . import views 
 
 urlpatterns = [
-    url(r'^$',stores_views.index,name="index"),
-    url(r'^(?P<store_id>\d+)/$',stores_views.detail,name="detail"),
-    url(r'^(?P<store_id>\d+)/about/',include('coffeehouse.about.urls',namespace="about")),
+    url(r'^$',views.index,name="index"),
+    url(r'^(?P<store_id>\d+)/$',views.detail,name="detail"),
+    url(r'^(?P<store_id>\d+)/about/',include('coffeehouse.about.urls',namespace="stores_about")),
 ]

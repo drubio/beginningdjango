@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
 from jinja2.environment import Environment
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.core.urlresolvers import reverse
