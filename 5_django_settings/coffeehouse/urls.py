@@ -1,7 +1,7 @@
 from django.conf.urls import include, url
 from django.views.generic import TemplateView
 from django.contrib import admin
-
+import debug_toolbar
 
 from coffeehouse.drinks.urls import urlpatterns as drinks_url_patterns
 
@@ -13,4 +13,5 @@ urlpatterns = [
     url(r'^online/',TemplateView.as_view(template_name='online/index.html'),name='online'),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^__debug__/', include(debug_toolbar.urls)),
 ]

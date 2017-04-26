@@ -39,7 +39,7 @@ def detail(request,store_id=1):
     try: 
         stdlogger.info("About to search db")
         # Loging to search db 
-    except Exception, e:
+    except Exception as e:
         stdlogger.error("Error in searchdb method")
         dbalogger.error("Error in searchdb method, stack %s" % (e))
     return render(request,'stores/detail.html', vals_for_template)

@@ -22,20 +22,24 @@ SECRET_KEY = '%ea)cjy@v9(#7!b#(#20gl+4-6iur28dy=tc4f$-zbm-v#=!#t'
 
 ALLOWED_HOSTS = ['*']
 
-INSTALLED_APPS = (
+INSTALLED_APPS = [
+    'django_pdb',
+    'django_extensions',
     'django.contrib.admin',
+    'django.contrib.admindocs',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
     'coffeehouse.about',
     'coffeehouse.stores',
     'coffeehouse.drinks',
-    'django.contrib.admindocs',
-)
+    'raven.contrib.django.raven_compat',
+]
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -44,7 +48,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-)
+    'debug_toolbar.middleware.DebugToolbarMiddleware'
+]
 
 ROOT_URLCONF = 'coffeehouse.urls'
 
@@ -112,6 +117,14 @@ STATIC_ROOT = '%s/coffeestatic/'% (BASE_DIR)
 
 ADMINS =(('Webmaster', 'webmaster@coffeehouse.com'), ('Admin', 'admin@coffeehouse.com'))
 
+RAVEN_CONFIG = {
+    'dsn': 'https://<place_your_project_dsn_here>:<place_your_project_dsn_here>@sentry.io/151850',
+    # If you are using git, you can also automatically configure the
+    # release based on the git info.
+    #'release': raven.fetch_git_sha(os.path.dirname(os.pardir)),
+}
+
+
 if LIVEHOST:
     # Output to file based SMTP server on live host 
     EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
@@ -124,6 +137,10 @@ else:
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': True,
+    'root': {
+        'level': 'DEBUG',
+        'handlers': ['sentry'],
+    },    
     'filters': {
         'require_debug_false': {
             '()': 'django.utils.log.RequireDebugFalse',
@@ -148,6 +165,10 @@ LOGGING = {
             'filters': ['require_debug_true'],
             'class': 'logging.StreamHandler',
             'formatter': 'simple'
+        },
+        'sentry': {
+            'level': 'DEBUG',
+            'class': 'raven.contrib.django.handlers.SentryHandler',
         },
         'development_logfile': {
             'level': 'DEBUG',
@@ -186,3 +207,4 @@ LOGGING = {
         },
     }
 }
+
