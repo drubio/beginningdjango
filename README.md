@@ -1,4 +1,4 @@
-djangorecipes
+Beginning Django
 =============
 
-See http://www.webforefront.com/django/ for related Django Recipes content
+See http://www.webforefront.com/django/ for related Django content
