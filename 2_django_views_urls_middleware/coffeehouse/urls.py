@@ -10,7 +10,7 @@ handler403 = 'coffeehouse.utils.views.permission_denied'
 handler404 = 'coffeehouse.utils.views.page_not_found'
 # Overrides the default 500 handler django.views.defaults.server_error
 handler500 = 'coffeehouse.utils.views.server_error'
-
+    
 urlpatterns = [
     url(r'^$',TemplateView.as_view(template_name='homepage.html'),name="homepage"),
     url(r'^about/',include('coffeehouse.about.urls',namespace="about")),

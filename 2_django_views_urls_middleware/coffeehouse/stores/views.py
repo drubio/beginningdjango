@@ -8,9 +8,18 @@ from django.http import Http404,HttpResponsePermanentRedirect
 
 STORE_LIST =  [{'id':0,'name':'Corporate','address':'624 Broadway','city':'San Diego','state':'CA','email':'corporate@coffeehouse.com'},{'id':1,'name':'Downtown','address':'Horton Plaza','city':'San Diego','state':'CA','email':'downtown@coffeehouse.com'},{'id':2,'name':'Uptown','address':'1240 University Ave','city':'San Diego','state':'CA','email':'uptown@coffeehouse.com'},{'id':3,'name':'Midtown','address':'784 W Washington St','city':'San Diego','state':'CA','email':'midtown@coffeehouse.com'}]
 
+import logging
+
+stdlogger = logging.getLogger(__name__)
+
 def index(request,location=None):
+    stdlogger.info("Start stores index")
     store_list = STORE_LIST[1:]
-    return render(request,'stores/index.html',  {'stores':store_list})    
+    stdlogger.info("End stores index")
+    from django.template.response import TemplateResponse
+    t = TemplateResponse(request, 'stores/index.html', {'stores':store_list})
+    return t
+    #return render(request,'stores/index.html',  {'stores':store_list})    
 
 def detail(request,store_id=1,location=None):
     # Access store_id parameter with 'store_id' variable 
