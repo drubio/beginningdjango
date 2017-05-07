@@ -22,7 +22,10 @@ INSTALLED_APPS = (
     'coffeehouse.about',
     'coffeehouse.stores',
     'coffeehouse.drinks',
+    'django.forms',
 )
+
+FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -90,3 +93,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 INTERNAL_IPS = ('127.0.0.1')
+
+MEDIA_ROOT = '%s/userfiles/'% (BASE_DIR)

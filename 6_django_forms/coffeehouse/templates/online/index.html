@@ -7,9 +7,30 @@
 {% endblock %} 
 
 
-{% block content %} 
-<h4> Coming soon! </h4>
-<p> Sorry for the inconvenience </p> 
-<p> Thank you for visiting today {% now "F jS o" %}</p> 
+{% block content %}
+	<h4> Select items for your order </h4>
+<form method="post" action="">
+	  {% csrf_token %}
+	  {{ formset.management_form }}
+	  {% if formset.non_form_errors %}<div class="alert alert-danger">{{formset.non_form_errors}}</div>{% endif %}
+    <table>
+        {% for form in formset %}
+        <tr><td>{{ form }}</td></tr>
+        {% endfor %}
+    </table>
+    <input type="hidden" value="false" name="additems" id="additems">
+    <button class="btn btn-primary" id="additemsbutton">Add items to order</button>
+    <input type="submit" value="Submit order" class="btn btn-primary">    
+</form>
 
+{% endblock %}
+
+{% block beforebodyend %}
+<script>
+$(document).ready(function() {
+        $("#additemsbutton").on('click',function(event) {
+         $("#additems").val("true");
+       });
+});
+</script>
 {% endblock %}

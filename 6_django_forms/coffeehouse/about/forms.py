@@ -1,6 +1,22 @@
 from django import forms
 import re
 
+class GenderField(forms.ChoiceField):
+      def __init__(self, *args, **kwargs):
+            super(GenderField, self).__init__(*args, **kwargs)
+            self.error_messages = {"required":"Please select a gender, it's required"}
+            self.choices = ((None,'Select gender'),('M','Male'),('F','Female'))
+
+class PlaceholderInput(forms.widgets.Input):
+      template_name = 'about/placeholder.html'
+      input_type = 'text'
+      def get_context(self, name, value, attrs):
+            context = super(PlaceholderInput, self).get_context(name, value, attrs)
+            context['widget']['attrs']['maxlength'] = 50
+            context['widget']['attrs']['placeholder'] = name.title()
+            return context    
+
+    
 def validate_comment_word_count(value):
       count = len(value.split())
       if count < 30:
@@ -9,13 +25,15 @@ def validate_comment_word_count(value):
             )
   
 class ContactForm(forms.Form):
-      name = forms.CharField(required=False,max_length=5)
-      email = forms.EmailField(label='Your email')  
+      name = forms.CharField(required=False,widget=PlaceholderInput)
+      email = forms.EmailField(label='Your email',widget=PlaceholderInput)  
       comment = forms.CharField(widget=forms.Textarea,validators=[validate_comment_word_count],error_messages={"required":"Please, pretty please provide a comment"})
+      gender = GenderField()
+      field_order=['email','name','gender','comment']
       def __init__(self, *args, **kwargs):
             # Get 'initial' argument if any
             initial_arguments = kwargs.get('initial', None)
-            updated_initial = {}
+            updated_initial = initial_arguments
             if initial_arguments:
                   # We have initial arguments, fetch 'user' placeholder variable if any
                   user = initial_arguments.get('user',None)
@@ -40,9 +58,9 @@ class ContactForm(forms.Form):
             if name.lower() not in email:
                   # Name is not in email , raise an error
                   message = "Please provide an email that contains your name, or viceversa"
-                  self.add_error('name', message)
-                  self.add_error('email', forms.ValidationError(message))
-                  #self.add_error(None, message)
+                  #self.add_error('name', message)
+                  #self.add_error('email', forms.ValidationError(message))
+                  self.add_error(None, message)
                   #raise forms.ValidationError("Please provide an email that contains your name, or viceversa")            
       def clean_name(self):
             # Get the field value from cleaned_data dict

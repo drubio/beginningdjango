@@ -33,5 +33,5 @@ def contact(request,store_id=None):
             return HttpResponseRedirect('/about/contact/thankyou')
     else:
         # GET, generate blank form
-        form = ContactForm(field_order=['email','name','comment'],label_suffix=' : ',initial={'user':request.user,'otherstuff':'otherstuff'},use_required_attribute=False,auto_id=False)
+        form = ContactForm(label_suffix=' : ',initial={'user':request.user,'otherstuff':'otherstuff'},use_required_attribute=False,auto_id=False)
     return render(request,'about/contact.html',{'form':form})

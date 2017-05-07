@@ -10,7 +10,8 @@ urlpatterns = [
     url(r'^about/', include('coffeehouse.about.urls',namespace="about")),
     url(r'^drinks/', include(drinks_url_patterns,namespace="drinks")),
     url(r'^stores/',include('coffeehouse.stores.urls',namespace="stores")),
-    url(r'^online/',TemplateView.as_view(template_name='online/index.html'),name='online'),
+    url(r'^online/',include('coffeehouse.online.urls',namespace="online")),
+    url(r'^social/',include('coffeehouse.social.urls',namespace="social")),    
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', admin.site.urls),
 ]

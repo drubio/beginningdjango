@@ -11,6 +11,14 @@
 	<form method="POST">
   {% csrf_token %}
 
+  {% if form.non_field_errors %}
+  <div class="row">
+    {% for error in form.non_field_errors %}
+    <div class="alert alert-danger">{{error}}</div>
+    {% endfor %}
+  </div>
+  {% endif %}
+	     
   {% for field in form %}
     <div class="row">
       <div class="col-md-2">
