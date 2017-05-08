@@ -76,7 +76,7 @@ class ContactForm(forms.Form):
             value = self.cleaned_data['email']
 	    # Check if the value end in @hotmail.com
             if value.endswith('@hotmail.com'):
-                  # Value end in @hotmail.com, raise an error
+                  # Value ends in @hotmail.com, raise an error
                   raise forms.ValidationError("Please don't use a hotmail email, we simply don't like it",code='hotmail')
             # Always return value
             return value

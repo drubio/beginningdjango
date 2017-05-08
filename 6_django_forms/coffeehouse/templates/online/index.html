@@ -15,7 +15,7 @@
 	  {% if formset.non_form_errors %}<div class="alert alert-danger">{{formset.non_form_errors}}</div>{% endif %}
     <table>
         {% for form in formset %}
-        <tr><td>{{ form }}</td></tr>
+        <tr><td><ul class="list-inline">{{ form.as_ul }}</ul></td></tr>
         {% endfor %}
     </table>
     <input type="hidden" value="false" name="additems" id="additems">
