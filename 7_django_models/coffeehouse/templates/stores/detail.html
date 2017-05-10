@@ -1,0 +1,61 @@
+{% extends "stores/index.html" %}
+{% block title %} Coffeehouse {{store.name}} {% endblock %} 
+
+{% block breadcrumb %}
+     {{ block.super }}
+    <li class="active">{{store.name}}</li>
+{% endblock %}
+
+
+{% block content %}
+
+<h4> {{store.name}} store</h4>
+<p>{{store.address}}</p>
+<p>{{store.city}},{{store.state}}</p>
+<hr/>
+<p>We offer: </p>
+<ul>
+{% for amenity in store.amenities.all %}<li>{{amenity.name}}.- {{amenity.description}}</li>{% endfor %}
+</ul>
+
+<h4>Feedback</h4>
+<div class="row">
+  <div id="feedbackmessage"</div>
+</div>
+<form method="POST" id="feedbackform" action="{% url 'stores:feedback' %}">
+  {% csrf_token %}
+    <div class="row">
+      <div class="col-md-12 pull-left">
+	 {{ form.comment }}
+       </div>
+    </div>
+<input type="submit" value="Submit feedback" class="btn btn-primary">
+</form>  
+{% endblock %}
+{% block beforebodyend %}
+<script>
+$(document).ready(function() {
+    $("#feedbackform").submit(function(event) {
+       event.preventDefault();
+       $.ajax({ data: $(this).serialize(), 
+                type: $(this).attr('method'), 
+                url: $(this).attr('action'), 
+                success: function(response) {
+                     console.log(response);
+                     if(response['success']) {
+                         $("#feedbackmessage").html("<div class='alert alert-success'>Succesfully sent feedback, thank you!</div>");
+                         $("#feedbackform").addClass("hidden");
+                     } 
+                     if(response['error']) {
+                         $("#feedbackmessage").html("<div class='alert alert-danger'>" + response['error']['comment'] +"</div>");
+                     } 
+                },
+                error: function (request, status, error) {
+                     console.log(request.responseText);
+                }
+       });
+   });
+})
+
+</script>
+{% endblock %}

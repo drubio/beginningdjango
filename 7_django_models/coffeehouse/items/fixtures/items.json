@@ -1,0 +1,159 @@
+[
+{
+  "model": "items.menu",
+  "pk": 1,
+  "fields": {
+    "name": "Breakfast"
+  }
+},
+{
+  "model": "items.menu",
+  "pk": 2,
+  "fields": {
+    "name": "Salads"
+  }
+},
+{
+  "model": "items.menu",
+  "pk": 3,
+  "fields": {
+    "name": "Sandwiches"
+  }
+},
+{
+  "model": "items.menu",
+  "pk": 4,
+  "fields": {
+    "name": "Drinks"
+  }
+},
+{
+  "model": "items.item",
+  "pk": 1,
+  "fields": {
+    "menu": 1,
+    "name": "Whole-Grain Oatmeal",
+    "description": "A blend of rolled and steel-cut oats with optional toppings : cinnamon, brown sugar or mixed nuts",
+    "size": "P",
+    "calories": 150,
+    "price": 3.99
+  }
+},
+{
+  "model": "items.item",
+  "pk": 2,
+  "fields": {
+    "menu": 1,
+    "name": "Bacon, Egg & Cheese Biscuit",
+    "description": "A fresh buttermilk biscuit with strips of bacon, folded egg and cheese",
+    "size": "P",
+    "calories": 450,
+    "price": 2.99
+  }
+},
+{
+  "model": "items.item",
+  "pk": 3,
+  "fields": {
+    "menu": 2,
+    "name": "Caesar salad",
+    "description": "A mix of romaine lettuce and croutons dressed with parmesan cheese, lemon juice & olive oil",
+    "size": "P",
+    "calories": 250,
+    "price": 3.99
+  }
+},
+{
+  "model": "items.item",
+  "pk": 4,
+  "fields": {
+    "menu": 2,
+    "name": "Red Fruit Salad",
+    "description": "A mix of red fruits -- strawberries, raspberries & plums -- tossed in orange juice and sugar",
+    "size": "P",
+    "calories": 100,
+    "price": 3.99
+  }
+},
+{
+  "model": "items.item",
+  "pk": 5,
+  "fields": {
+    "menu": 3,
+    "name": "Turkey Sandwich",
+    "description": "Toasted whole wheat bread with sliced turkey, tomato & lettuce",
+    "size": "P",
+    "calories": 300,
+    "price": 4.99
+  }
+},
+{
+  "model": "items.item",
+  "pk": 6,
+  "fields": {
+    "menu": 3,
+    "name": "Grilled cheese",
+    "description": "Flat bread or whole wheat bread with a mix of American,  Pepper Jack and Provolone cheeses",
+    "size": "P",
+    "calories": 400,
+    "price": 3.99
+  }
+},
+{
+  "model": "items.item",
+  "pk": 7,
+  "fields": {
+    "menu": 4,
+    "name": "Mocha",
+    "description": "Our superior dark coffee made from beans from Arabia",
+    "size": "S",
+    "calories": 200,
+    "price": 1.99
+  }
+},
+{
+  "model": "items.item",
+  "pk": 8,
+  "fields": {
+    "menu": 4,
+    "name": "Espresso",
+    "description": "Our strong coffee brewed by forcing steam under pressure through darkly roasted, powdered beans",
+    "size": "S",
+    "calories": 5,
+    "price": 1.99
+  }
+},
+{
+  "model": "items.item",
+  "pk": 9,
+  "fields": {
+    "menu": 4,
+    "name": "Latte",
+    "description": "Our coffee made with hot milk",
+    "size": "S",
+    "calories": 100,
+    "price": 1.99
+  }
+},
+{
+  "model": "items.drink",
+  "pk": 7,
+  "fields": {
+    "caffeine": 90
+  }
+},
+{
+  "model": "items.drink",
+  "pk": 8,
+  "fields": {
+    "caffeine": 100
+  }
+},
+{
+  "model": "items.drink",
+  "pk": 9,
+  "fields": {
+    "caffeine": 75
+  }
+}
+]
