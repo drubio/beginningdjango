@@ -1,0 +1,13 @@
+{% extends "base.html" %} 
+{% block title %} Coffeehouse Thank you!{% endblock %} 
+
+{% block breadcrumb %} 
+        <li><a href="{% url 'homepage' %}">Home</a></li>
+        <li><a href="{% url 'about:contact' %}">Contact</a></li>         
+        <li class="active">Thank you!</li>
+	{% endblock %}
+
+	
+{% block content %}
+<h4> Thank you for contacting us!</h4>
+{% endblock %}

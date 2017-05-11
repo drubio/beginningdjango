@@ -1,0 +1,15 @@
+INSERT INTO stores_store_amenities(store_id,amenity_id) VALUES((SELECT id from stores_store where name='Corporate'),(SELECT id from stores_amenity where name='WiFi'));
+INSERT INTO stores_store_amenities(store_id,amenity_id) VALUES((SELECT id from stores_store where name='Downtown'),(SELECT id from stores_amenity where name='WiFi'));
+INSERT INTO stores_store_amenities(store_id,amenity_id) VALUES((SELECT id from stores_store where name='Uptown'),(SELECT id from stores_amenity where name='WiFi'));
+INSERT INTO stores_store_amenities(store_id,amenity_id) VALUES((SELECT id from stores_store where name='Midtown'),(SELECT id from stores_amenity where name='WiFi'));
+INSERT INTO stores_store_amenities(store_id,amenity_id) VALUES((SELECT id from stores_store where name='Corporate'),(SELECT id from stores_amenity where name='A/C'));
+INSERT INTO stores_store_amenities(store_id,amenity_id) VALUES((SELECT id from stores_store where name='Downtown'),(SELECT id from stores_amenity where name='A/C'));
+INSERT INTO stores_store_amenities(store_id,amenity_id) VALUES((SELECT id from stores_store where name='Uptown'),(SELECT id from stores_amenity where name='A/C'));
+INSERT INTO stores_store_amenities(store_id,amenity_id) VALUES((SELECT id from stores_store where name='Midtown'),(SELECT id from stores_amenity where name='A/C'));
+INSERT INTO stores_store_amenities(store_id,amenity_id) VALUES((SELECT id from stores_store where name='Corporate'),(SELECT id from stores_amenity where name='Parking'));
+INSERT INTO stores_store_amenities(store_id,amenity_id) VALUES((SELECT id from stores_store where name='Downtown'),(SELECT id from stores_amenity where name='Parking'));
+INSERT INTO stores_store_amenities(store_id,amenity_id) VALUES((SELECT id from stores_store where name='Downtown'),(SELECT id from stores_amenity where name='Laptop locks'));
+INSERT INTO stores_store_amenities(store_id,amenity_id) VALUES((SELECT id from stores_store where name='Uptown'),(SELECT id from stores_amenity where name='Laptop locks'));
+INSERT INTO stores_store_amenities(store_id,amenity_id) VALUES((SELECT id from stores_store where name='Midtown'),(SELECT id from stores_amenity where name='Laptop locks'));
+INSERT INTO stores_store_amenities(store_id,amenity_id) VALUES((SELECT id from stores_store where name='Corporate'),(SELECT id from stores_amenity where name='Newspapers'));
+INSERT INTO stores_store_amenities(store_id,amenity_id) VALUES((SELECT id from stores_store where name='Downtown'),(SELECT id from stores_amenity where name='Newspapers'));

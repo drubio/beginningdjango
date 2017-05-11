@@ -1,0 +1,50 @@
+[
+{
+  "model": "stores.store",
+  "pk": 1,
+  "fields": {
+    "name": "Corporate",
+    "address": "624 Broadway",
+    "city": "San Diego",
+    "state": "CA",
+    "email": "corporate@coffeehouse.com",
+    "amenities": []
+  }
+},
+{
+  "model": "stores.store",
+  "pk": 2,
+  "fields": {
+    "name": "Downtown",
+    "address": "Horton Plaza",
+    "city": "San Diego",
+    "state": "CA",
+    "email": "downtown@coffeehouse.com",
+    "amenities": []
+  }
+},
+{
+  "model": "stores.store",
+  "pk": 3,
+  "fields": {
+    "name": "Uptown",
+    "address": "1240 University Ave",
+    "city": "San Diego",
+    "state": "CA",
+    "email": "uptown@coffeehouse.com",
+    "amenities": []
+  }
+},
+{
+  "model": "stores.store",
+  "pk": 4,
+  "fields": {
+    "name": "Midtown",
+    "address": "784 W Washington St",
+    "city": "San Diego",
+    "state": "CA",
+    "email": "midtown@coffeehouse.com",
+    "amenities": []
+  }
+}
+]

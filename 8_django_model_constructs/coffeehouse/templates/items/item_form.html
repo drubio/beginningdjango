@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %} Coffeehouse {% if object == None%}new{% else %}edit {{object}}{% endif %} item {% endblock %} 
+ 
+{% block breadcrumb %}
+        <li><a href="{% url 'homepage' %}">Home</a> </li>         
+
+        <li><a href="{% url 'items:index' %}">Items</a></li>
+
+	<li class="active">{% if object == None%}New{% else %}Edit {{object}}{% endif %} item</li>
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">{% if object == None%}Create{% else %}Update{% endif %}</button>
+    </form>
+
+{% endblock %}
