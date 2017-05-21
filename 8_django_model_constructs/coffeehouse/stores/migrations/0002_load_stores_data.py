@@ -9,6 +9,13 @@ def load_store_amenities_from_sql():
     sql_statements = open(os.path.join(settings.PROJECT_DIR,'stores/sql/store_amenities.sql'), 'r').read()
     return sql_statements
 
+def delete_store_amenities_from_sql():
+    return "DELETE from stores_store_amenities"; #sql_statements
+
+def delete_stores(apps, schema_editor):
+    Amenity = apps.get_model("stores", "Store")
+    Amenity.objects.all().delete()
+    
 def load_amenities(apps, schema_editor):
     Amenity = apps.get_model("stores", "Amenity")
     amenity_wifi = Amenity(name='WiFi',description='Just consult your purchase ticket to access our Wifi password and surf the net while you enjoy your coffee')
@@ -23,6 +30,11 @@ def load_amenities(apps, schema_editor):
     amenity_newspapers.save()    
 
 
+def delete_amenities(apps, schema_editor):
+    Amenity = apps.get_model("stores", "Amenity")
+    Amenity.objects.all().delete()
+
+    
 def load_stores_from_fixture(apps, schema_editor):
     from django.core.management import call_command
     call_command("loaddata", "stores")
@@ -34,7 +46,7 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(load_amenities),
-        migrations.RunPython(load_stores_from_fixture),
-        migrations.RunSQL(load_store_amenities_from_sql()),
+        migrations.RunPython(load_amenities,delete_amenities),
+        migrations.RunPython(load_stores_from_fixture,delete_stores),
+        migrations.RunSQL(load_store_amenities_from_sql(),delete_store_amenities_from_sql()),
     ]
