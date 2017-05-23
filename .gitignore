@@ -1,6 +1,6 @@
 *~
 *.pyc
-db.sqlite3
+*.sqlite3
 build/
 coffeestatic/
 __pycache__/

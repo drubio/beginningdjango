@@ -5,4 +5,7 @@ from django.apps import AppConfig
 
 
 class StoresConfig(AppConfig):
-    name = 'stores'
+    name = 'coffeehouse.stores'
+
+    def ready(self):
+        import coffeehouse.stores.signals
