@@ -47,7 +47,7 @@ class DatabaseForDevOps(object):
             else:
                 # Non Django core app models should not be migrated if database is devops
                 return False
-        # Other database should not migraate Django core app models            
+        # Other database should not migrate Django core app models            
         elif app_label in ['auth','admin','sessions','contenttypes']:
             return False
         # Otherwise no opinion (defer to other routers or default database)
