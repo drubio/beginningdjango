@@ -9,6 +9,8 @@ from django import forms
 @python_2_unicode_compatible
 class SharingFile(models.Model):
     file = models.FileField(upload_to='.')
+    def __str__():
+        return "%s" % (self.file)    
     
 class SharingForm(forms.ModelForm):
     class Meta:      

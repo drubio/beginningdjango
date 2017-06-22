@@ -30,7 +30,8 @@ class Contact(View):
         form = ContactForm(request.POST)
         # check if it's valid:
         if form.is_valid():
-            # process data, insert into DB, generate email,etc
+            # insert into DB
+            form.save()
             # redirect to a new URL:
             return HttpResponseRedirect('/about/contact/thankyou')
         return render(request,'about/contact.html',{'form':form})

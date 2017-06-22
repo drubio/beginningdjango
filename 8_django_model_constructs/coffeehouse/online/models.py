@@ -24,14 +24,17 @@ class BaseItemFormSet(forms.BaseModelFormSet):
 @python_2_unicode_compatible
 class Order(models.Model):
     created = models.DateTimeField(auto_now_add=True)
-
+    def __str__(self):
+        return "%s" % (self.created)    
 
 @python_2_unicode_compatible
 class OrderItem(models.Model):
     item = models.IntegerField()
     amount = models.IntegerField()
     order = models.ForeignKey(Order)
-
+    def __str__(self):
+        return "%s" % (self.item)
+    
 def item_choices():
     all_items = Item.objects.all()
     menu_list = [(None,'Please select an item')]
