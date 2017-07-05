@@ -18,6 +18,6 @@ class Contact(models.Model):
       name = models.CharField(max_length=50,blank=True)
       email = models.EmailField()  
       comment = models.CharField(max_length=1000,validators=[validate_comment_word_count])
-      def __str__():
+      def __str__(self):
             return "%s" % (self.name)
       
