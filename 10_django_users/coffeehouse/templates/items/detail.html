@@ -1,0 +1,20 @@
+{% extends "items/index.html" %}
+{% block title %} {{item|title}} item {% endblock %} 
+
+{% block breadcrumb %}
+     {{ block.super }}
+     <li class="active">{{item.name|title}}</li>
+{% endblock %}
+
+{% block content %}
+
+<h4> {{item.name|title}}</h4>
+<p>{{item.description}}</p>
+<p>${{item.price}}</p>
+<p>For {{item.get_size_display}} size: Only {{item.calories}} calories
+{% if item.drink %}
+and {{item.drink.caffeine}} mg of caffeine.</p>
+{% endif %}
+</p>
+
+{% endblock %}
