@@ -12,23 +12,35 @@ from django.views.generic.edit import (
     DeleteView
 )
 from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.models import Group
 
-class ItemList(ListView):
+class ItemList(LoginRequiredMixin,ListView):
     model = Item
-    context_object_name = 'items' # Override object_list reference for template
+    context_object_name = 'items'
     template_name = 'items/index.html'
 
-class ItemDetail(DetailView):
+class ItemDetail(UserPassesTestMixin,DetailView):
     model = Item
     pk_url_kwarg = 'item_id'    
     template_name = 'items/detail.html'
-
-class ItemCreation(SuccessMessageMixin,CreateView):
+    def test_func(self):
+        return self.request.user.is_authenticated
+    
+class ItemCreation(PermissionRequiredMixin,SuccessMessageMixin,CreateView):
     model = Item
     form_class = ItemForm
     success_url = reverse_lazy('items:index')
     success_message = "Item %(name)s created successfully"
+    permission_required = ('items.add_item',)
 
+
+@method_decorator(login_required, name='dispatch')
 class ItemUpdate(SuccessMessageMixin,UpdateView):
     model = Item
     pk_url_kwarg = 'item_id'    
@@ -36,6 +48,8 @@ class ItemUpdate(SuccessMessageMixin,UpdateView):
     success_url = reverse_lazy('items:index')
     success_message = "Item %(name)s updated successfully"
 
+
+@method_decorator(user_passes_test(lambda u: Group.objects.get_or_create(name='Baristas') in u.groups.all()), name='dispatch')
 class ItemDelete(DeleteView):
     model = Item
     pk_url_kwarg = 'item_id'    

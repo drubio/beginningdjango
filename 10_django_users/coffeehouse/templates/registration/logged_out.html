@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}Coffeehouse log out{% endblock %} 
+{% block nobreadcrumb %}{% endblock %}
+{% block content %}
+    <div class="text-center">
+        <h3>Thanks for accessing the application</h3>
+        <p><a href="{% url 'login' %}">Log in again</a></p>
+    </div>
+{% endblock %}

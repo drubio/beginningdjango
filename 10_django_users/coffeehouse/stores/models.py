@@ -59,3 +59,6 @@ class Store(models.Model):
             raise ValidationError('Wait San Diego is in CA!, are you sure there is another San Diego in %s ?' % (self.state))
     class Meta:
         unique_together = ("name", "email")
+        default_permissions = ('add',)
+        permissions = (('give_refund','Can refund customers'),('can_hire','Can hire employees'))
+        

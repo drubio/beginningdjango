@@ -19,13 +19,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'coffeehouse.about',
     'coffeehouse.stores',
     'coffeehouse.items',
     'coffeehouse.online',
-    'coffeehouse.social',    
+    'coffeehouse.social',
+    'coffeehouse.registration',        
 ]
 
+SITE_ID = 1
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -93,3 +96,13 @@ STATIC_URL = '/static/'
 INTERNAL_IPS = ('127.0.0.1')
 
 MEDIA_ROOT = '%s/userfiles/'% (BASE_DIR)
+
+LOGIN_REDIRECT_URL = '/'
+
+LOGOUT_REDIRECT_URL = '/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+AUTH_USER_MODEL = 'registration.CoffeehouseUser'
+
+AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend', 'coffeehouse.registration.models.EmailBackend']

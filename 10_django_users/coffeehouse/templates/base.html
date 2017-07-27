@@ -45,7 +45,14 @@
 	      <li><a href="{% url 'online:index' %}">Order online</a></li>
 	      <li><a href="{% url 'social:index' %}">Share your media</a></li>	      
             </ul>
-	  </li>	  
+	  </li>
+	  {% if user.is_authenticated %}
+	  <li><a href="{% url 'logout' %}">Log out {{user.username}}</a></li>
+          <li><a href="{% url 'password_change' %}">Change my password</a></li>	  
+	  {% else %}
+	  <li><a href="{% url 'login' %}">Log in</a></li>
+	  <li><a href="{% url 'signup' %}">Sign up</a></li>	  
+	  {% endif %}
         </ul>
       </div><!--/.navbar-collapse -->
     </div>
