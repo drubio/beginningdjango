@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %} Coffeehouse Items page {% endblock %} 
+
+{% block breadcrumb %} 
+        <li><a href="{% url 'homepage' %}">Home</a> </li>         
+	{% if item %}
+            <li><a href="{% url 'items:index' %}">Items</a></li>         
+        {% else %} 
+            <li class="active">Items</li>
+	{% endif %}
+{% endblock %}
+
+{% block content %}
+
+   {% if messages %}
+        {% for message in messages %}
+        <p class="alert alert-dismissable {% if message.tags %}alert-{{ message.tags }}"{% endif %}>
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            {{ message }}
+        </p>
+      {% endfor %}
+    {% endif %}
+	
+	    <a href="{% url 'items:new' %}" class="btn btn-primary">Create new Item</a>
+	    <hr/>
+  <ul> 
+{% regroup items by menu as item_menu_list %}
+{% for menu_section in item_menu_list %}
+   <li>{{ menu_section.grouper }}
+    <ul>
+        {% for item in menu_section.list %}
+	<li><a href="{% url 'items:detail' item.id %}">{{item.name|title}}</a> <a href="{% url 'items:edit' item.id %}" class="btn-sm btn-info">Edit</a> <a href="{% url 'items:delete' item.id %}" class="btn-sm btn-danger">Delete</a></li>    
+        {% endfor %}
+    </ul>
+    </li>
+{% endfor %}
+  </ul>
+
+{% endblock %}
