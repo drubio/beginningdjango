@@ -1,0 +1,41 @@
+{% extends "base.html" %} 
+{% block title %} Coffeehouse Contact {{store.name}} store {% endblock %} 
+
+{% block breadcrumb %} 
+        <li><a href="{% url 'homepage' %}">Home</a></li>         
+        <li class="active">Contact</li>
+{% endblock %} 
+
+{% block content %}
+
+	<form method="POST">
+  {% csrf_token %}
+
+  {% if form.non_field_errors %}
+  <div class="row">
+    {% for error in form.non_field_errors %}
+    <div class="alert alert-danger">{{error}}</div>
+    {% endfor %}
+  </div>
+  {% endif %}
+	     
+  {% for field in form %}
+    <div class="row">
+      <div class="col-md-2">
+        {{ field.label_tag }}
+	{% if field.help_text %}
+          <sup>{{ field.help_text }}</sup>
+          {% endif %}
+	  {% for error in field.errors %}
+           <div class="row">
+             <div class="alert alert-danger">{{error}}</div>
+	   </div>
+	  {% endfor %}
+       </div><div class="col-md-10 pull-left">
+	 {{ field }}
+       </div>
+    </div>
+    {% endfor %}
+<input type="submit" value="Submit form" class="btn btn-primary">
+</form>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %} 
+{% load store_format_tf %}
+
+{% block title %} Coffeehouse home page {% endblock %} 
+{% block nobreadcrumb %}{% endblock %}
+{% block content %}
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h1>Welcome to the Coffeehouse!</h1>
+        <p><a class="btn btn-primary btn-lg" href="{% url 'about:index'%}">Learn more &raquo;</a></p>
+	{% with myvar="Open since 1965!" %} 	
+	{{myvar|customcoffee:"lead muted"}}
+        {% endwith%}
+      </div>
+
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-3">
+          <h2>Stores</h2>
+          <p><a class="btn btn-default" href="{% url 'stores:index' %}">View store details &raquo;</a></p>
+        </div>
+        <div class="col-md-3">
+          <h2>Items</h2>
+          <p><a class="btn btn-default" href="{% url 'items:index' %}">View item details &raquo;</a></p>
+        </div>
+        <div class="col-md-3">
+          <h2>Order online</h2>
+          <p><a class="btn btn-default" href="{% url 'online:index' %}">Order online &raquo;</a></p>
+        </div>
+	<div class="col-md-3">
+          <h2>Social</h2>
+          <p><a class="btn btn-default" href="{% url 'social:index' %}">Share your media &raquo;</a></p>
+        </div>	
+      </div>
+{% endblock %}
