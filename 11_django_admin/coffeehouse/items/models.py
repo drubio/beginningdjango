@@ -16,6 +16,7 @@ class ItemMenuManager(models.Manager):
 @python_2_unicode_compatible
 class Menu(models.Model):
     name = models.CharField(max_length=30)
+    creator = models.CharField(max_length=100,default='Coffeehouse Chef')    
     def __str__(self):
         return "%s" % (self.name)
 
@@ -39,7 +40,10 @@ class Item(models.Model):
     menumgr = ItemMenuManager()
     def __str__(self):
         return "%s (%s)" % (self.name, self.description)
-
+    class Meta:
+        permissions = (
+            ('read_item','Can read item'),
+        )
     
 @python_2_unicode_compatible
 class Drink(models.Model):

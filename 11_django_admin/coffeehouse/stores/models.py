@@ -39,6 +39,8 @@ class Amenity(models.Model):
     def __str__(self):
         return "%s (%s)" % (self.name, self.description)
 
+from django.utils.html import format_html
+
 @python_2_unicode_compatible
 class Store(models.Model):
     name = models.CharField(max_length=30)    
@@ -57,5 +59,8 @@ class Store(models.Model):
         # Don't allow 'San Diego' city entries that have state different than 'CA'
         if self.city == 'San Diego' and self.state != 'CA':
             raise ValidationError('Wait San Diego is in CA!, are you sure there is another San Diego in %s ?' % (self.state))
+    def full_address(self):
+        return format_html('%s - <b>%s,%s</b>' % (self.address,self.city,self.state))
+    full_address.admin_order_field = '-city'
     class Meta:
         unique_together = ("name", "email")
