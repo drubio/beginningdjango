@@ -27,7 +27,7 @@ class ItemAdmin(admin.ModelAdmin):
     save_as_continue = False
     class Media:
         css = {
-            "coffeehouse": ("css/items/items.css",)
+            "screen": ("css/items/items.css",)
         }
         js = ("js/items/items.js",)
     def get_readonly_fields(self, request, obj=None):
