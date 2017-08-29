@@ -1,0 +1,5 @@
+Django==1.11
+docutils==0.13.1
+pytz==2017.2
+sqlparse==0.2.3
+
