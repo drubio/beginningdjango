@@ -23,7 +23,8 @@ INSTALLED_APPS = [
     'coffeehouse.stores',
     'coffeehouse.items',
     'coffeehouse.online',
-    'coffeehouse.social',    
+    'coffeehouse.social',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -93,3 +94,11 @@ STATIC_URL = '/static/'
 INTERNAL_IPS = ('127.0.0.1')
 
 MEDIA_ROOT = '%s/userfiles/'% (BASE_DIR)
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+        #'rest_framework.permissions.AllowAny',
+    )
+}

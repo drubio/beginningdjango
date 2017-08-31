@@ -36,4 +36,17 @@ class StoreFeedbackView(View):
             return JsonResponse({'success':True})
         else:
             return JsonResponse({'error':form.errors})
-        
+
+
+from rest_framework import viewsets
+
+from coffeehouse.stores.serializers import StoreSerializer
+from rest_framework.permissions import IsAuthenticated, AllowAny
+
+class StoreViewSet(viewsets.ModelViewSet):
+    """
+    Return a list of all the Store records.
+    """    
+    permission_classes = (IsAuthenticated,)
+    queryset = Store.objects.all()
+    serializer_class = StoreSerializer

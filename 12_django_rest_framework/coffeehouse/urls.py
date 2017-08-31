@@ -14,4 +14,5 @@ urlpatterns = [
     url(r'^social/',include('coffeehouse.social.urls',namespace="social")),        
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^rest-auth/', include('rest_framework.urls',namespace='rest_framework')),    
 ]
