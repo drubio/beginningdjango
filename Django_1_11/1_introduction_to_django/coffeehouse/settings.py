@@ -1,11 +1,11 @@
 # Django settings for coffeehouse project.
 
-from pathlib import Path
+import os
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-PROJECT_DIR = Path(__file__).resolve().parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 
-SECRET_KEY = 'django-insecure-s@#xh-_qp!z7^5*n8n$py50^n9$&kkcqul=@kjn1uvw($x4(^9'
+SECRET_KEY = 'i-52s2bxa97v_iua_jvqjgh6xsekegp34ayjrnc%6-wv&r7ea%'
 
 DEBUG = True
 
@@ -19,7 +19,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'coffeehouse.about.apps',
+    'coffeehouse.about',
 )
 
 MIDDLEWARE = [
@@ -55,7 +55,7 @@ WSGI_APPLICATION = 'coffeehouse.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -85,5 +85,3 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
