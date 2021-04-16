@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 # Create your views here.
 from django.shortcuts import render
 from django.core.exceptions import PermissionDenied,SuspiciousOperation
@@ -22,8 +19,8 @@ def index(request,location=None):
     #return render(request,'stores/index.html',  {'stores':store_list})    
 
 def detail(request,store_id=1,location=None):
-    # Access store_id parameter with 'store_id' variable 
-    # Access location parameter with 'location' variable
+    # Access store_id url parameter with 'store_id' variable 
+    # Access location url parameter with 'location' variable
     # Extract 'hours', 'lat' or 'lon' values appended to url as
     # e.g. ?hours=sunday&latitude=32.71&longitude=-117.16
     # 'hours' has value 'sunday' or '' if hours not in url
@@ -53,11 +50,11 @@ def detail(request,store_id=1,location=None):
         return HttpResponsePermanentRedirect("http://maps.google.com/")
     # Create fixed data structures to pass to template
     # data could equally come from database queries
-    if store_id == "1":
+    if store_id == 1:
         store = STORE_LIST[1]
-    elif store_id == "2":
+    elif store_id == 2:
         store = STORE_LIST[2]
-    elif store_id == "3":
+    elif store_id == 3:
         store = STORE_LIST[3]
     else:
         raise Http404

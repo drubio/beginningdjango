@@ -1,0 +1,22 @@
+<h4>Home page for Django</h4>
+
+<ul>
+ <li> Drink link: <a href="{% url 'drink_type' 'mocha' %}">{% url 'drink_type' 'mocha' %}</a></li>
+ <li> Drink link: <a href="{% url 'drink_type' 'espresso' %}">{% url 'drink_type' 'espresso' %}</a></li>
+ <li> Store main link: <a href="{% url 'stores:index' %}">{% url 'stores:index' %}</a></li>
+ <li> Store 1 link: <a href="{% url 'stores:detail' 1 %}">{% url 'stores:detail' 1 %}</a></li>
+ <li> Store 2 link: <a href="{% url 'stores:detail' 2 %}">{% url 'stores:detail' 2 %}</a></li>
+ <li> Store 3 link: <a href="{% url 'stores:detail' 3 %}">{% url 'stores:detail' 3 %}</a></li>
+ <li> About link: <a href="{% url 'about:index' %}">{% url 'about:index' %}</a></li>
+ <li> Contact link: <a href="{% url 'about:contact' %}">{% url 'about:contact' %}</a></li>
+ <li> Coffee banners link: <a href="{% url 'coffee-banners:index' %}">{% url 'coffee-banners:index' %}</a></li>
+ <li> Tea banners link: <a href="{% url 'tea-banners:index' %}">{% url 'tea-banners:index' %}</a></li>
+ <li> Food banners link: <a href="{% url 'food-banners:index' %}">{% url 'food-banners:index' %}</a></li>
+</ul>
+
+<h4>Django HTTP handling</h4> 
+ <li>302 - Permanent redirect <a href="{% url 'stores:detail' 1 %}?latitude=90&longitude=90">{% url 'stores:detail' 1 %}?latitude=90&longitude=90</a> (Latitude 90 and longitude 90, redirects to maps.google.com)</li>
+ <li>400 - Bad request <a href="{% url 'stores:detail' 1 %}?latitude=ABC&longitude=DEF">{% url 'stores:detail' 1 %}?latitude=ABC&longitude=DEF</a> (Latitude and/or Longitude not numbers)</li>
+ <li>404 - Not found <a href="{% url 'stores:detail' 1 %}?hours=lundi">{% url 'stores:detail' 1 %}?hours=lundi</a> (Unknown day to get hours)</li>
+ <li>500 - Internal server error <a href="{% url 'stores:detail' 1 %}?latitude=92.71&longitude=-117.16">{% url 'stores:detail' 1 %}?latitude=92.71&longitude=-117.16</a> (Latitude out of range -90 to 90)</li>
+ <li>500 - Internal server error <a href="{% url 'stores:detail' 1 %}?latitude=32.71&longitude=-187.16">{% url 'stores:detail' 1 %}?latitude=32.71&longitude=-187.16</a> (Longitude out of range -180 to 180)</li>

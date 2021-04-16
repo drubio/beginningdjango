@@ -1,0 +1,63 @@
+<h4> {{store.name}} store</h4>
+<p>We offer: {{store_amenities.0}} and {{store_amenities.1}}</p> 
+<p>Menu includes : {{store_menu.1.1}} and {{store_menu.2.1}}</p> 
+<p><a href="{% url 'stores:stores_about:index' store.id %}">More about this store</a></p> 
+<p><a href="{% url 'stores:stores_about:contact' store.id %}">Contact this store</a></p> 
+<hr/>  
+<p>custom context processor variable</p> 
+<ul>
+  <li><code>SALE_ITEMS</code>:{{SALE_ITEMS}}</li>
+</ul>
+<p>auth context processor variables</p>
+<ul>
+ <li><code>user</code>:{{user}}</li>
+ <li><code>perms.coffeehouse.about</code>: {{perms.coffeehouse.about}}</li>
+</ul>
+<p>debug context processor variables</p>
+<p><b>NOTE</b>: Debug context processor variables are only available when <code>DEBUG=True</code> in <code>settings.py</code> &amp; requesting IP address is in <code>INTERNAL_IPS</code> also in <code>settings.py</code>. Otherwise these variables are always empty.</p>
+<ul>
+ <li><code>debug</code>:{{debug}}</li>
+ <li><code>sql_queries</code>:{{sql_queries}}</li>
+</ul>
+
+<p>i18n context processor variables</p>
+<ul>
+ <li><code>LANGUAGES</code>:{{LANGUAGES}}</li>
+ <li><code>LANGUAGE_CODE</code>:{{LANGUAGE_CODE}}</li>
+ <li><code>LANGUAGE_BIDI</code>:{{LANGUAGE_BIDI}}</li>
+</ul>
+
+
+<p>media context processor variable</p>
+<ul>
+<li><code>MEDIA_URL</code>:{{MEDIA_URL}}</li>
+</ul>
+
+<p>static context processor variable</p>
+<ul>
+<li><code>STATIC_URL</code>:{{STATIC_URL}}</li>
+</ul>
+
+<p>tz context processor variable</p>
+<ul>
+<li><code>TIME_ZONE</code>:{{TIME_ZONE}}</li>
+</ul>
+
+
+<p>message context processor variable</p>
+<ul>
+<li><code>messages</code>:{{messages}}</li>
+<li><code>DEFAULT_MESSAGE_LEVELS</code>:{{DEFAULT_MESSAGE_LEVELS}}</li>
+
+</ul>
+
+
+<p>request context processor variable</p>
+<ul>
+<li><code>request</code>:{{request}}</li>
+</ul>
+
+<p>CSRF context processor variable</p>
+<ul>
+<li><code>csrf_token</code>:{{csrf_token}}</li>
+</ul>

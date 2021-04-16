@@ -1,6 +1,11 @@
-from django.conf.urls import include, url
+from django.urls import include, path, re_path, register_converter
 from django.contrib import admin
 from django.views.generic import TemplateView
+
+from coffeehouse.utils import converters
+
+register_converter(converters.RomanNumeralConverter, 'roman')
+register_converter(converters.FloatConverter, 'float')
 
 # Overrides the default 400 handler django.views.defaults.bad_request
 handler400 = 'coffeehouse.utils.views.bad_request'
@@ -12,13 +17,15 @@ handler404 = 'coffeehouse.utils.views.page_not_found'
 handler500 = 'coffeehouse.utils.views.server_error'
     
 urlpatterns = [
-    url(r'^$',TemplateView.as_view(template_name='homepage.html'),name="homepage"),
-    url(r'^about/',include('coffeehouse.about.urls',namespace="about")),
-    url(r'^drinks/(?P<drink_type>\D+)/',TemplateView.as_view(template_name='drinks/index.html'),{'onsale':True},name="drink_type"),
-    url(r'^stores/',include('coffeehouse.stores.urls',namespace="stores")),
-    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    url(r'^admin/', admin.site.urls),
-    url(r'^coffeebanners/',include('coffeehouse.banners.urls',namespace="coffee-banners",app_name="banners_adverts")),
-    url(r'^teabanners/',include('coffeehouse.banners.urls',namespace="tea-banners",app_name="banners_adverts")),
-    url(r'^foodbanners/',include('coffeehouse.banners.urls',namespace="food-banners",app_name="banners_adverts")),
+    path('',TemplateView.as_view(template_name='homepage.html'),name="homepage"),
+    path('<roman:roman_number>/',TemplateView.as_view(template_name='homepage.html')),
+    path('<float:float_number>/',TemplateView.as_view(template_name='homepage.html')),
+    path('about/',include('coffeehouse.about.urls',namespace="about")),
+    path('admin/doc/', include('django.contrib.admindocs.urls')),
+    path('admin/', admin.site.urls),
+    path('coffeebanners/',include('coffeehouse.banners.urls',namespace="coffee-banners")),    
+    path('drinks/<str:drink_type>/',TemplateView.as_view(template_name='drinks/index.html'),{'onsale':True},name="drink_type"),
+    path('foodbanners/',include('coffeehouse.banners.urls',namespace="food-banners")),    
+    path('stores/',include('coffeehouse.stores.urls',namespace="stores")),
+    path('teabanners/',include('coffeehouse.banners.urls',namespace="tea-banners")),
 ]
