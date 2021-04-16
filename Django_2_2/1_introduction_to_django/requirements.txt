@@ -1,4 +1,4 @@
-Django==2.2
+Django==2.2.20
 docutils==0.14
 pytz==2018.9
 sqlparse==0.3.0
