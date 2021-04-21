@@ -38,7 +38,7 @@ def detail(request,store_id=1,location=None):
         float(latitude)
         float(longitude)
     except ValueError:
-        raise SuspiciousOperation
+        raise SuspiciousOperation("Cannot convert latitude or longitude to float")
     # Validation if latitude in range
     if float(latitude) > 90 or float(latitude) < -90:
         raise Exception("Invalid latitude, min -90 and max 90")

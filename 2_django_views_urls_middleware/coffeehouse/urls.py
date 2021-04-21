@@ -1,6 +1,7 @@
-from django.urls import include, path, re_path, register_converter
 from django.contrib import admin
 from django.views.generic import TemplateView
+from django.urls import include, path, re_path, register_converter
+
 
 from coffeehouse.utils import converters
 
@@ -20,12 +21,12 @@ urlpatterns = [
     path('',TemplateView.as_view(template_name='homepage.html'),name="homepage"),
     path('<roman:roman_number>/',TemplateView.as_view(template_name='homepage.html')),
     path('<float:float_number>/',TemplateView.as_view(template_name='homepage.html')),
-    path('about/',include('coffeehouse.about.urls',namespace="about")),
+    path('about/',include('coffeehouse.about.urls')),
     path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('admin/', admin.site.urls),
     path('coffeebanners/',include('coffeehouse.banners.urls',namespace="coffee-banners")),    
     path('drinks/<str:drink_type>/',TemplateView.as_view(template_name='drinks/index.html'),{'onsale':True},name="drink_type"),
     path('foodbanners/',include('coffeehouse.banners.urls',namespace="food-banners")),    
-    path('stores/',include('coffeehouse.stores.urls',namespace="stores")),
+    path('stores/',include('coffeehouse.stores.urls')),
     path('teabanners/',include('coffeehouse.banners.urls',namespace="tea-banners")),
 ]
