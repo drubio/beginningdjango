@@ -1,7 +1,10 @@
 # Create your views here.
+from django.core.exceptions import PermissionDenied, BadRequest
+from django.http import Http404, HttpResponse, HttpResponsePermanentRedirect
+from django.template import Context, Template
+from django.template.response import TemplateResponse
 from django.shortcuts import render
-from django.core.exceptions import PermissionDenied,SuspiciousOperation
-from django.http import Http404,HttpResponsePermanentRedirect
+from django.utils import timezone
 
 STORE_LIST =  [{'id':0,'name':'Corporate','address':'624 Broadway','city':'San Diego','state':'CA','email':'corporate@coffeehouse.com'},{'id':1,'name':'Downtown','address':'Horton Plaza','city':'San Diego','state':'CA','email':'downtown@coffeehouse.com'},{'id':2,'name':'Uptown','address':'1240 University Ave','city':'San Diego','state':'CA','email':'uptown@coffeehouse.com'},{'id':3,'name':'Midtown','address':'784 W Washington St','city':'San Diego','state':'CA','email':'midtown@coffeehouse.com'}]
 
@@ -13,10 +16,9 @@ def index(request,location=None):
     stdlogger.info("Start stores index")
     store_list = STORE_LIST[1:]
     stdlogger.info("End stores index")
-    from django.template.response import TemplateResponse
     t = TemplateResponse(request, 'stores/index.html', {'stores':store_list})
     return t
-    #return render(request,'stores/index.html',  {'stores':store_list})    
+    #return render(request,'stores/index.html',  {'stores':store_list})
 
 def detail(request,store_id=1,location=None):
     # Access store_id url parameter with 'store_id' variable 
@@ -38,7 +40,7 @@ def detail(request,store_id=1,location=None):
         float(latitude)
         float(longitude)
     except ValueError:
-        raise SuspiciousOperation("Cannot convert latitude or longitude to float")
+        raise BadRequest("Provided latitude or longitude can't be converted to float")
     # Validation if latitude in range
     if float(latitude) > 90 or float(latitude) < -90:
         raise Exception("Invalid latitude, min -90 and max 90")
@@ -62,3 +64,22 @@ def detail(request,store_id=1,location=None):
     store_menu = ((0,''),(1,'Drinks'),(2,'Food'))
     vals_for_template = {'store':store,'store_amenities':store_amenities,'store_menu':store_menu}
     return render(request,'stores/detail.html', vals_for_template)
+
+
+def menu(request, store_id=1):
+    # Create inline CSV template
+    csv_inline_template = Template("type, name\n{% for type, items in menu.items %}{% for item in items %}{{type}},{{item}}\n{% endfor %}{% endfor %}")
+    # Define menu as dictionary to fill template
+    context = {'menu':
+               {'drinks': ['Espresso','Latte','Mocha'],
+                'foods': ['Grilled cheese','Turkey Sandwich','Whole-Grain Oatmeal']
+               }
+              }
+    # Prepare response as CSV
+    response = HttpResponse(content_type='text/csv')
+    # Add HTTP header so response is returned in file attachment with custom name
+    response['Content-Disposition'] = f'attachment; filename=Menu_Store_{store_id}_Date_{timezone.now().today()}.csv'
+    # Render template with context and write to response
+    response.write(csv_inline_template.render(Context(context)))
+    return response
+
