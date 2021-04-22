@@ -1,4 +1,4 @@
-Django==1.11
+Django==1.11.29
 docutils==0.13.1
 Jinja2==2.9.4
 jinja2-django-tags==0.5
