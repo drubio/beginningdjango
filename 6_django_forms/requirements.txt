@@ -1,4 +1,4 @@
-Django==1.11
+Django==1.11.29
 docutils==0.13.1
 pytz==2017.2
 
