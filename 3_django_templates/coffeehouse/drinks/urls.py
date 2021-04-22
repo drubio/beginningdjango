@@ -1,10 +1,10 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+from django.urls import include, path
+from . import views 
+from . import apps
 
-from django.conf.urls import include, url
-from coffeehouse.drinks import views as drinks_views
+app_name = apps.DrinksConfig.name
 
 urlpatterns = [
-    url(r'^$',drinks_views.index,name="index"),
-    url(r'^(?P<drink_type>\D+)/$',drinks_views.detail,name="detail"),
+    path('',views.index,name="index"),
+    path('<str:drink_type>/',views.detail,name="detail"),
 ]

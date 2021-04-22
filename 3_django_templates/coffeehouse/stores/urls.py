@@ -1,12 +1,11 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
-from django.conf.urls import include, url
-
+from django.urls import include, path
 from . import views 
+from . import apps
+
+app_name = apps.StoresConfig.name
 
 urlpatterns = [
-    url(r'^$',views.index,name="index"),
-    url(r'^(?P<store_id>\d+)/$',views.detail,name="detail"),
-    url(r'^(?P<store_id>\d+)/about/',include('coffeehouse.about.urls',namespace="stores_about")),
+    path('',views.index,name="index"),
+    path('<int:store_id>/',views.detail,name="detail"),
+    path('<int:store_id>/about/',include(('coffeehouse.about.urls'), namespace="nested-stores-about")),
 ]

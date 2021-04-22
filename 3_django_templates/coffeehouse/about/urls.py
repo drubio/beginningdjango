@@ -1,12 +1,12 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
-from django.conf.urls import url
+from django.urls import path
 from . import views
+from . import apps
+
+app_name = apps.AboutConfig.name
 
 urlpatterns = [
-    url(r'^$',views.index,name="index"),
-    url(r'^(?P<store_id>\d+)/$',views.index,name="index_withid"),
-    url(r'^contact/$',views.contact,name="contact"),
-    url(r'^contact/(?P<store_id>\d+)/$',views.contact,name="contact_withid"),
+    path('',views.index,name="index"),
+    path('<int:store_id>/',views.index,name="index_withid"),
+    path('contact/',views.contact,name="contact"),
+    path('contact/<int:store_id>/',views.contact,name="contact_withid"),
 ]
