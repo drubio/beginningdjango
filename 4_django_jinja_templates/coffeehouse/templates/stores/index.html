@@ -4,7 +4,7 @@
 {% block breadcrumb %} 
         <li><a href="{% url 'homepage' %}">Home</a></li>         
 	{% if store %}
-            <li><a href="{% url 'stores:index' %}">Stores</a></li>         
+            <li><a href="{% url 'coffeehouse.stores:index' %}">Stores</a></li>         
         {% else %} 
             <li class="active">Stores</li>
         {% endif %} 
@@ -14,7 +14,7 @@
 
   <ul> 
 {% for store in stores %}
-    <li><a href="{% url 'stores:detail' store.id %}">{{store.name}}</a></li>    
+    <li><a href="{% url 'coffeehouse.stores:detail' store.id %}">{{store.name}}</a></li>    
 {% endfor %}
   </ul>
 
