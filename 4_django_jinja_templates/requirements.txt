@@ -1,4 +1,4 @@
-Django==3.2
+Django==3.2.5
 docutils==0.17
 Jinja2==3.0.2
 MarkupSafe==2.0.1
