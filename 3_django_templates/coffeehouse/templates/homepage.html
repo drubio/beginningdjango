@@ -6,7 +6,7 @@
 {% block content %}
 
   <!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="jumbotron">
+      <div class="p-5 mb-4 bg-light rounded-3">
         <h1>Welcome to the Coffeehouse!</h1>
         <p><a class="btn btn-primary btn-lg" href="{% url 'coffeehouse.about:index'%}">Learn more &raquo;</a></p>
 	{% with myvar="Open since 1965!" %} 	
@@ -18,15 +18,15 @@
       <div class="row">
         <div class="col-md-4">
           <h2>Stores</h2>
-          <p><a class="btn btn-default" href="{% url 'coffeehouse.stores:index' %}">View store details &raquo;</a></p>
+          <p><a class="btn btn-outline-secondary" href="{% url 'coffeehouse.stores:index' %}">View store details &raquo;</a></p>
         </div>
         <div class="col-md-4">
           <h2>Drinks</h2>
-          <p><a class="btn btn-default" href="{% url 'coffeehouse.drinks:index' %}">View drink details &raquo;</a></p>
+          <p><a class="btn  btn-outline-secondary" href="{% url 'coffeehouse.drinks:index' %}">View drink details &raquo;</a></p>
         </div>
         <div class="col-md-4">
           <h2>Order online</h2>
-          <p><a class="btn btn-default" href="{% url 'online' %}">Order online &raquo;</a></p>
+          <p><a class="btn btn-outline-secondary" href="{% url 'online' %}">Order online &raquo;</a></p>
         </div>
       </div>
 {% endblock %}

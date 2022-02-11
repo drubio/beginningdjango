@@ -5,7 +5,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 PROJECT_DIR = Path(__file__).resolve().parent
 
-SECRET_KEY = 'django-insecure-s@#xh-_qp!z7^5*n8n$py50^n9$&kkcqul=@kjn1uvw($x4(^9'
+SECRET_KEY = 'django-insecure-3*w@re!%88p%w%+-3^g_z=pna5zot51cfjt4t^!6=u7sp7qo1!'
 
 DEBUG = True
 
@@ -83,11 +83,9 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_L10N = True
-
 USE_TZ = True
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

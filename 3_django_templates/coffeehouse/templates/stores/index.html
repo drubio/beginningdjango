@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% block title %} Coffeehouse Stores page {% endblock %} 
 
-{% block breadcrumb %} 
-        <li><a href="{% url 'homepage' %}">Home</a></li>         
-	{% if store.name %}
-            <li><a href="{% url 'coffeehouse.stores:index' %}">Stores</a></li>         
-        {% else %} 
-            <li class="active">Stores</li>
-        {% endif %} 
+{% block breadcrumb %}
+    <li class="breadcrumb-item"><a href="{% url 'homepage' %}">Home</a> </li>
+    {% if store.name %}
+     <li class="breadcrumb-item"><a href="{% url 'coffeehouse.stores:index' %}">Stores</a></li>         
+    {% else %} 
+     <li class="breadcrumb-item active" aria-current="page">Stores</li>
+    {% endif %}
 {% endblock %} 
 
 {% block content %}

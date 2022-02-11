@@ -1,2 +1,2 @@
-Django==3.2
-docutils==0.17
+Django>4,<5
+docutils==0.18.1
