@@ -2,11 +2,11 @@
 {% block title %} Coffeehouse Drinks page {% endblock %} 
 
 {% block breadcrumb %} 
-        <li><a href="{% url 'homepage' %}">Home</a> </li>         
+        <li class="breadcrumb-item"><a href="{{ url('homepage') }}">Home</a> </li>         
 	{% if drink %}
-            <li><a href="{% url 'coffeehouse.drinks:index' %}">Drinks</a></li>         
+            <li class="breadcrumb-item"><a href="{{ url('coffeehouse.drinks:index') }}">Drinks</a></li>         
         {% else %} 
-            <li class="active">Drinks</li>
+            <li class="breadcrumb-item active" aria-current="page">Drinks</li>
 	{% endif %}
 {% endblock %}
 
@@ -14,7 +14,7 @@
 
   <ul> 
 {% for drink in drinks %}
-    <li><a href="{% url 'coffeehouse.drinks:detail' drink %}">{{drink|title}}</a></li>    
+    <li><a href="{{ url('coffeehouse.drinks:detail',args=[drink]) }}">{{drink|title}}</a></li>    
 {% endfor %}
   </ul>
 

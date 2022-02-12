@@ -3,8 +3,8 @@
 
 
 {% block breadcrumb %} 
-        <li><a href="{% url 'homepage' %}">Home</a></li>         
-        <li class="active">About</li>
+        <li class="breadcrumb-item"><a href="{{ url('homepage') }}">Home</a></li>         
+        <li class="breadcrumb-item active" aria-current="page">About</li>
 {% endblock %} 
 
 {% block content %}

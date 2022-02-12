@@ -1,6 +1,4 @@
-Django==3.2
-docutils==0.17
-Jinja2==3.0.2
+Django>4,<5
+docutils==0.18.1
+Jinja2==3.0.3
 MarkupSafe==2.0.1
-jinja2-django-tags==0.5
-

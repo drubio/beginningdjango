@@ -7,7 +7,7 @@ class JinjaEnvironment(Environment):
     def __init__(self,**kwargs):
         super(JinjaEnvironment, self).__init__(**kwargs)
         self.globals['static'] = staticfiles_storage.url
-        self.globals['reverse'] = reverse
+        self.globals['url'] = reverse
         self.filters['customcoffee'] = customcoffee
         self.filters['squarerootintext'] = squarerootintext
         self.filters['startswithvowel'] = startswithvowel
