@@ -1,0 +1,16 @@
+{% extends "base.html" %} 
+{% block title %} Coffeehouse Contact {{store.name}} store {% endblock %} 
+
+{% block breadcrumb %} 
+        <li><a href="{% url 'homepage' %}">Home</a></li>         
+        <li class="active">Contact</li>
+{% endblock %} 
+
+{% block content %}
+
+<h4>{{store.name}} store</h4>
+
+<p><a href="mailto:{{store.email}}">{{store.email}}</a></p>
+
+
+{% endblock %}

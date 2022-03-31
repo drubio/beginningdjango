@@ -1,8 +1,9 @@
 # Django settings for coffeehouse project.
 
-import os
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+PROJECT_DIR = Path(__file__).resolve().parent
 
 # Import socket to read host name
 import socket
@@ -18,7 +19,7 @@ if LIVEHOST:
 else:
     DEBUG = True
 
-SECRET_KEY = '%ea)cjy@v9(#7!b#(#20gl+4-6iur28dy=tc4f$-zbm-v#=!#t'
+SECRET_KEY = 'django-insecure-3*w@re!%88p%w%+-3^g_z=pna5zot51cfjt4t^!6=u7sp7qo1!'
 
 ALLOWED_HOSTS = ['*']
 
@@ -45,7 +46,6 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware'
@@ -56,7 +56,7 @@ ROOT_URLCONF = 'coffeehouse.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['%s/templates/'% (PROJECT_DIR),],
+        'DIRS': [ PROJECT_DIR / 'templates' ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'coffeehouse.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -100,22 +100,23 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_L10N = True
-
 USE_TZ = True
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 INTERNAL_IPS = ('127.0.0.1')
 
-STATICFILES_DIRS = ('%s/website-static-default/'% (BASE_DIR),
-                    ('bootstrap','%s/bootstrap-3.1.1-dist/'% (BASE_DIR)),
-                    ('jquery','%s/jquery-1-11-1-dist/'% (BASE_DIR)),
-                    ('jquery-ui','%s/jquery-ui-1.10.4/'% (BASE_DIR)),)
+STATICFILES_DIRS = [ BASE_DIR / 'website-static-default',
+                     ('bootstrap', BASE_DIR / 'bootstrap-5.0.2-dist'),
+                     ('jquery', BASE_DIR / 'jquery-3-6-0-dist'),
+                     ('jquery-ui', BASE_DIR / 'jquery-ui-1.13.1'),
+                   ]
 
-STATIC_ROOT = '%s/coffeestatic/'% (BASE_DIR)
+STATIC_ROOT = BASE_DIR / 'coffeestatic'
 
-ADMINS =(('Webmaster', 'webmaster@coffeehouse.com'), ('Admin', 'admin@coffeehouse.com'))
+ADMINS = [('Webmaster', 'webmaster@coffeehouse.com'), ('Admin', 'admin@coffeehouse.com')]
 
 RAVEN_CONFIG = {
     'dsn': 'https://<place_your_project_dsn_here>:<place_your_project_dsn_here>@sentry.io/151850',

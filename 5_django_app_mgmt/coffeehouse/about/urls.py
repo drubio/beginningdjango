@@ -1,9 +1,12 @@
-from django.conf.urls import include, url
-from coffeehouse.about import views as about_views
+from django.urls import path
+from . import views
+from . import apps
+
+app_name = apps.AboutConfig.name
 
 urlpatterns = [
-    url(r'^$',about_views.index,name="index"),
-    url(r'^(?P<store_id>\d+)/$',about_views.index,name="index_withid"),
-    url(r'^contact/$',about_views.contact,name="contact"),
-    url(r'^contact/(?P<store_id>\d+)/$',about_views.contact,name="contact_withid"),
+    path('',views.index,name="index"),
+    path('<int:store_id>/',views.index,name="index_withid"),
+    path('contact/',views.contact,name="contact"),
+    path('contact/<int:store_id>/',views.contact,name="contact_withid"),
 ]

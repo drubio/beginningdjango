@@ -1,7 +1,6 @@
-Django==1.11
-django-debug-toolbar==1.7
-django-extensions==1.7.8
-django-pdb==0.5.1
-docutils==0.13.1
-pytz==2017.2
-raven==6.0.0
+Django>4,<5
+django-debug-toolbar==3.2.4
+django-extensions==3.1.5
+django-pdb==0.6.2
+docutils==0.18.1
+raven==6.10.0

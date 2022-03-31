@@ -23,11 +23,11 @@ def index(request):
 def detail(request,store_id=1):
     stdlogger.info("Call to detail method")
     stdlogger.debug("Entering store_id conditional block with store_id=%s" % store_id)
-    if store_id == "1":
+    if store_id == 1:
         store = STORE_LIST[1]
-    elif store_id == "2":
+    elif store_id == 2:
         store = STORE_LIST[2]
-    elif store_id == "3":
+    elif store_id == 3:
         store = STORE_LIST[3]
     else:
         raise Http404
