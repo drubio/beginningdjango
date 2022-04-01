@@ -11,7 +11,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.auth',
@@ -21,8 +21,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'coffeehouse.about',
     'coffeehouse.stores',
-
-)
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
